@@ -7,7 +7,23 @@
     <div v-for="(item, i) in products" :key="i">
       <h4 :style="h4Style">{{ item }}</h4>
       <p>50 만원</p>
+      <button @click="increase(i)">허위매물신고</button>
+      <span>신고수 : {{reportNums[i]}}</span>
     </div>
+    <!-- <div>
+      <h4 :style="h4Style">{{products[0]}}</h4>
+      <p>50 만원</p>
+      <button @click="increase">허위매물신고</button>
+      <span>신고수 : {{reportNum}}</span>
+    </div>
+    <div>
+      <h4 :style="h4Style">{{products[1]}}</h4>
+      <p>50 만원</p>
+    </div>
+    <div>
+      <h4 :style="h4Style">{{products[2]}}</h4>
+      <p>50 만원</p>
+    </div>-->
   </div>
 </template>
 
@@ -19,8 +35,14 @@ export default {
     return {
       h4Style: "color: blue",
       products: ["역삼동원룸", "천호동원룸", "마포구원룸"],
-      menus: ["Home", "Shop", "About"]
+      menus: ["Home", "Shop", "About"],
+      reportNums: [0, 0, 0]
     };
+  },
+  methods: {
+    increase(index) {
+      this.reportNums[index]++;
+    }
   },
   components: {}
 };
