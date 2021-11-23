@@ -12,17 +12,17 @@
       </div>
     </div>
 
-    <div v-for="(item, i) in products" :key="i">
-      <img src="./assets/room0.jpg" alt="방" class="room-img" />
-      <h4 :style="h4Style" @click="isModalOpen = true">{{ item }}</h4>
-      <p>50 만원</p>
-      <button @click="increase(i)">허위매물신고</button>
-      <span>신고수 : {{reportNums[i]}}</span>
+    <div v-for="(item, i) in rooms" :key="i">
+      <img :src="item.image" alt="방" class="room-img" />
+      <h4 @click="isModalOpen = true">{{ item.title }}</h4>
+      <p>{{ item.price }} 원</p>
     </div>
   </div>
 </template>
 
 <script>
+import data from "./assets/data";
+
 export default {
   name: "App",
   data() {
@@ -32,7 +32,8 @@ export default {
       products: ["역삼동원룸", "천호동원룸", "마포구원룸"],
       menus: ["Home", "Shop", "About"],
       reportNums: [0, 0, 0],
-      isModalOpen: false
+      isModalOpen: false,
+      rooms: data
     };
   },
   methods: {
